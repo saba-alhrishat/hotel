@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head> 
+
+    <base href="/public">
+
   @include('admin.css')
     <style type="text/css">
       label{
@@ -29,33 +32,35 @@
       <div class="container-fluid">
 
       <div class="div_center">
-        <h1 style="font-size: 30px; font-weight: bold;">Add Rooms</h1>
-        <form action="{{url('add_room')}}" method="post" enctype="multipart/form-data"> 
+        <h1 style="font-size: 30px; font-weight: bold;">Update Room</h1>
+        <form action="{{url('edit_room' ,$data->id)}}" method="post" enctype="multipart/form-data"> 
 
             @csrf
 
 
             <div class="div_deg">
                 <label>Room Title</label>
-                <input type="text" name="title">
+                <input type="text" name="title" value="{{$data->room_title}}">
             </div>
 
             <div class="div_deg">
                 <label>Description</label>
 
-                <textarea name="description"> </textarea>
+                <textarea name="description">{{$data->description}}    
+                </textarea>
             </div>
 
                <div class="div_deg">
                 <label>Price</label>
-                <input type="text" name="price">
+                <input type="text" name="price" value="{{$data->price}}">
             </div>
 
 
             <div class="div_deg">
                 <label>Room Type</label>
                 <select name="type">
-                    <option selected value="regular">Regular</option>
+                    <option selected value="{{$data->room_type}}">{{$data->room_type}}</option>
+                    <option value="regular">Regular</option>
                     <option value="premium">Premium</option>
                     <option value="delux">Delux</option>
                 </select>
@@ -64,11 +69,19 @@
             <div class="div_deg">
                 <label>Free Wifi</label>
                 <select name="wifi">
+                    <option selected value="{{$data->wifi}}">{{$data->wifi}}</option>
+
+
                     <option selected value="yes">Yes</option>
                     <option value="no">NO</option>
                 </select>
             </div class="div_deg">
 
+
+            <div class="div_deg">
+                <label> Current Image</label>
+                <img style="margin:auto;" width="100" src="/room/{{$data->image}}">
+               </div>
 
 
            <div class="div_deg">
@@ -78,7 +91,7 @@
 
 
                 <div>
-                    <input class="btn btn-primary" type="submit" value="Add Room">
+                    <input class="btn btn-primary" type="submit" value="Update Room">
 
                 </div>
 
