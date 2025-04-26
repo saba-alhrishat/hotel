@@ -70,8 +70,6 @@
                 <label>Free Wifi</label>
                 <select name="wifi">
                     <option selected value="{{$data->wifi}}">{{$data->wifi}}</option>
-
-
                     <option selected value="yes">Yes</option>
                     <option value="no">NO</option>
                 </select>
