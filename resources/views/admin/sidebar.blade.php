@@ -25,7 +25,18 @@
               <li>
                 <a href="{{url('bookings')}}"> <i class="icon-home"></i>Bookings </a>
               </li>
+             
 
+              
+              <li>
+                <a href="{{url('viwe_gallary')}}"> <i class="icon-home"></i>Gallary </a>
+              </li>
+
+
+
+              <li>
+                <a href="{{url('all_messages')}}"> <i class="icon-home"></i>Message </a>
+              </li>
 
 
       </ul>

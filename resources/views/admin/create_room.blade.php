@@ -48,7 +48,7 @@
 
                <div class="div_deg">
                 <label>Price</label>
-                <input type="text" name="price">
+                <input type="number" name="price">
             </div>
 
 

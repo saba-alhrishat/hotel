@@ -11,6 +11,13 @@ use App\Models\Room;
 
 use App\Models\Booking;
 
+use App\Models\Gallary;
+
+use App\Models\Contact;
+use App\Notifications\SendEmailNotification;
+use Illuminate\Support\Facades\Notification;
+
+
 class AdminController extends Controller
 {
     public function index()
@@ -24,7 +31,10 @@ class AdminController extends Controller
         {
            $room = Room::all();
 
-            return view('home.index', compact('room'));
+           $gallary = Gallary::all();
+
+
+            return view('home.index', compact('room','gallary'));
         }
        else if($usertype == 'admin')
         {
@@ -40,7 +50,10 @@ class AdminController extends Controller
 public function home()
 {
     $room = Room::all();
-    return View('home.index', compact('room'));
+
+    $gallary = Gallary::all();
+
+    return View('home.index', compact('room', 'gallary'));
 }
 
 
@@ -93,7 +106,7 @@ public function viwe_room()
 
 public function room_delete($id)
 {
-    $data = Room::find($id);
+    $data = Room::findOrFail($id);
 
     $data->delete();
 
@@ -110,7 +123,7 @@ public function room_update($id)
 
 public function edit_room(Request $request, $id)
 {
-    $data = Room::find($id);
+    $data = Room::findOrFail($id);
 
     $data->room_title = $request->title;
 
@@ -145,4 +158,117 @@ public function bookings()
     return view('admin.bookings', compact('data'));
 }
 
+public function delete_booking($id)
+{
+    $data = Booking::findOrFail($id);
+
+    $data->delete();
+
+    return redirect()->back();
+}
+
+public function approve_book($id)
+{
+    $booking = Booking::findOrFail($id);
+
+    $booking->status = 'approve';
+
+    $booking->save();
+
+    return redirect()->back();
+}
+
+public function reject_book($id)
+{
+    $booking = Booking::findOrFail($id);
+
+    $booking->status = 'rejected';
+
+    $booking->save();
+
+    return redirect()->back();
+
+}
+
+
+public function viwe_gallary()
+{
+    $gallary= Gallary::all();
+    return view('admin.gallary', compact('gallary'));
+
+}
+
+public function upload_gallary(Request $request)
+{
+    $data = new Gallary();
+    $image = $request->image;
+
+    if ($image){
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $request->image->move('gallary', $imagename);
+        $data->image = $imagename;
+        $data->save();
+        return redirect()->back();
+
+
+    }
+}
+
+
+public function delete_gallary($id)
+{
+    
+    $data = Gallary::findOrFail($id);
+    $data->delete();
+    return redirect()->back();
+}
+
+
+
+public function all_messages()
+{
+
+
+    $data = Contact::all();
+
+    return view('admin.all_message' , compact('data'));
+}
+
+
+public function send_mail($id)
+{
+    
+        $data = Contact::findOrFail($id);
+    
+        return view('admin.send_mail' , compact('data'));
+    
+    }
+
+    public function mail(Request $request,$id)
+    {
+        $data = Contact::find($id);
+
+        $details = [
+            'greeting' => $request->greeting,
+            
+            'body' => $request->body,
+
+            'action_text' => $request->action_text,
+
+
+            'action_url' => $request->action_url,
+
+
+            'endline' => $request->endline,
+           
+        ];
+
+
+                Notification::send($data, new SendEmailNotification($details));
+
+                return redirect()->back();
+
+
+
+    }
 }

@@ -63,7 +63,7 @@
                <tr>
                 <td>{{$data->room_title}}</td>
                 <td>{!! Str::limit($data->description,150) !!}</td>
-                <td>{{$data->price}}$</td>
+                <td>{{$data->price}}JD</td>
                 <td>{{$data->wifi}}</td>
                 <td>{{$data->room_type}}</td>
                 <td><img width="100" src="/room/{{$data->image}}"></td>
