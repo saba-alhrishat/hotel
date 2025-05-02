@@ -49,10 +49,40 @@
               
                <input type="submit" value="Add Image" class="btn btn-primary">
                     </div>
-
+                    @error('image')
+                    <div style="color: red; font-weight: bold;">{{ $message }}</div>
+                @enderror
+                
             </form>
 
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const fileInput = document.querySelector('input[name="image"]');
+                    const form = fileInput.closest('form');
+            
+                    form.addEventListener('submit', function (e) {
+                        const file = fileInput.files[0];
+                        if (file) {
+                            const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
+            
+                            if (!allowedTypes.includes(file.type)) {
+                                e.preventDefault();
+            
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Invalid File Type',
+                                    text: 'Only image files are allowed (jpg, png, gif, svg).'
+                                });
+            
+                                fileInput.value = ''; // clear file input
+                            }
+                        }
+                    });
+                });
+            </script>
+            
 </center>
 
 

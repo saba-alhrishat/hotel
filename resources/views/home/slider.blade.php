@@ -32,22 +32,11 @@
           <div class="row">
              <div class="col-md-5">
                 <div class="book_room">
-                   <h1>Book a Room Online</h1>
+                   <h1>Find your perfect stay</h1>
                    <form class="book_now">
                       <div class="row">
-                         <div class="col-md-12">
-                            <span>Arrival</span>
-                            <img class="date_cua" src="images/date.png">
-                            <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
-                         </div>
-                         <div class="col-md-12">
-                            <span>Departure</span>
-                            <img class="date_cua" src="images/date.png">
-                            <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
-                         </div>
-                         <div class="col-md-12">
-                            <button class="book_btn">Book Now</button>
-                         </div>
+                         <h3 style="color: white!important"> Your unforgettable stay starts here <br> discover and book premium hotel rooms
+                         </h3>
                       </div>
                    </form>
                 </div>

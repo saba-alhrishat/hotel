@@ -200,18 +200,46 @@ public function viwe_gallary()
 
 public function upload_gallary(Request $request)
 {
-    $data = new Gallary();
-    $image = $request->image;
+    // $data = new Gallary();
+    // $image = $request->image;
 
-    if ($image){
-        $imagename = time() . '.' . $image->getClientOriginalExtension();
-        $request->image->move('gallary', $imagename);
-        $data->image = $imagename;
-        $data->save();
-        return redirect()->back();
+    // if ($image){
+    //     $imagename = time() . '.' . $image->getClientOriginalExtension();
+    //     $request->image->move('gallary', $imagename);
+    //     $data->image = $imagename;
+    //     $data->save();
+    //     return redirect()->back();
 
 
-    }
+    // }
+
+
+
+
+
+
+
+
+    $request->validate([
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ]);
+
+    $image = $request->file('image');
+    $imagename = time() . '.' . $image->getClientOriginalExtension();
+    $image->move('gallary', $imagename);
+
+    $gallary = new Gallary;
+    $gallary->image = $imagename;
+    $gallary->save();
+
+    return redirect()->back()->with('message', 'Image uploaded successfully!');
+
+
+
+
+
+
+
 }
 
 

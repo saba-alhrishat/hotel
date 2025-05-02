@@ -75,6 +75,16 @@ class HomeController extends Controller
 
         public function contact(Request $request)
         {
+
+
+
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email',
+                'phone' => 'required|numeric|digits_between:7,15',
+                'message' => 'required|string|min:10',
+            ]);
+            
           $contact = new Contact;
 
           $contact->name = $request->name;
