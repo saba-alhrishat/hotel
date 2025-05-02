@@ -75,9 +75,7 @@
 
 
 
-{{-- 
-
-<x-modern-guest-layout>
+{{-- <x-modern-guest-layout>
     <x-modern-auth-card title="Create Your Account">
         @if ($errors->any())
             <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
@@ -249,3 +247,12 @@
         </div>
     </x-modern-auth-card>
 </x-modern-guest-layout>
+
+
+
+
+
+
+
+
+ 

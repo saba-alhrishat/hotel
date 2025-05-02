@@ -128,7 +128,7 @@
                              @if (Route::has('register'))
 
                              <li class="nav-item">
-                              <a class="btn btn-info" href="{{url('register')}}">Register</a>
+                              <a style="background-color: #DB6574!important; border-color: #DB6574;" class="btn btn-info" href="{{url('register')}}">Register</a>
                            </li>
 
                            @endif

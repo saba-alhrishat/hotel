@@ -35,7 +35,7 @@
                    <h1>Find your perfect stay</h1>
                    <form class="book_now">
                       <div class="row">
-                         <h3 style="color: white!important"> Your unforgettable stay starts here <br> discover and book premium hotel rooms
+                         <h3 style="color:#DB6574!important"> Your unforgettable stay starts here <br> discover and book premium hotel rooms
                          </h3>
                       </div>
                    </form>

@@ -6,25 +6,28 @@
 
 
   <style type="text/css">
-      
+
+
     .table_deg{
        
-        border: 2px solid white;
-        margin: auto;
+      border: 1px solid #DB6574;
+      box-shadow: 0 2px 10px #DB6574;
+         margin: auto;
         width: 80%;
         text-align: center;
         margin-top: 40px;
+        color: white
 
     }
 
     .th_deg{
-        background-color: skyblue;
-        padding: 15px;
+      background-color: #2d3035;
+      padding: 15px;
 
     }
     
     tr{
-        border: 3px solid white;
+      border: 1px solid #DB6574;
     }
 
     td
@@ -73,7 +76,7 @@
               <td>{{$data->message}}</td>
 
               <td>
-                <a href="{{url('send_mail', $data->id)}}"><button class="btn btn-success">Send Email</button></a>
+                <a href="{{url('send_mail', $data->id)}}"><button class="btn btn-success" style="background-color: #DB6574; border: #DB6574;">Send Email</button></a>
               </td>
              
              </tr>

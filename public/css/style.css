@@ -274,16 +274,16 @@ button {
 
 .navigation.navbar-dark .navbar-nav .nav-link:focus,
 .navigation.navbar-dark .navbar-nav .nav-link:hover {
-     color: #fe0000;
-     border-bottom: #fe0000 solid 3px;
+     color: #DB6574;
+     border-bottom: #DB6574 solid 3px;
 }
 
 .navigation.navbar-dark .navbar-nav .active>.nav-link,
 .navigation.navbar-dark .navbar-nav .nav-link.active,
 .navigation.navbar-dark .navbar-nav .nav-link.show,
 .navigation.navbar-dark .navbar-nav .show>.nav-link {
-     color: #fe0000;
-     border-bottom: #fe0000 solid 3px;
+     color: #DB6574;
+     border-bottom: #DB6574 solid 3px;
 }
 
 .navbar-expand-md .navbar-nav {
@@ -312,7 +312,7 @@ button {
 }
 
 .banner .carousel-indicators .active {
-     background-color: #fe0000;
+     background-color: #DB6574;
 }
 
 .booking_ocline {
@@ -325,7 +325,7 @@ button {
 .book_room {
      background-color: #000000c7;
      padding: 30px 35px;
-     border-left: #ff0909 solid 5px;
+     border-left: #DB6574 solid 5px;
 }
 
 .book_room h1 {
@@ -367,7 +367,7 @@ button {
 }
 
 .book_btn {
-     background-color: #fe0000;
+     background-color: #DB6574;
      max-width: 189px;
      width: 100%;
      margin: 0 auto;
@@ -381,7 +381,7 @@ button {
 
 .book_btn:hover {
      background-color: #fff;
-     color: #fe0000;
+     color: #DB6574;
      transition: ease-in 0.5s;
 }
 
@@ -416,7 +416,7 @@ button {
 .titlepage h2::before {
      position: absolute;
      content: "";
-     background-color: #ff0909;
+     background-color: #DB6574;
      width: 20px;
      height: 4px;
      transform: rotate(-36deg);
@@ -425,7 +425,8 @@ button {
 .titlepage h2::after {
      position: absolute;
      content: "";
-     background-color: #ff0909;
+     background-color: #DB6574;
+
      width: 20px;
      height: 4px;
      transform: rotate(-36deg);
@@ -453,7 +454,7 @@ button {
 }
 
 .read_more:hover {
-     background: #fe0000;
+     background: #DB6574;
      color: #fff;
      transition: ease-in all 0.5s;
 }
@@ -665,7 +666,7 @@ button {
 
 .blog .blog_box .blog_room span {
      font-size: 15px;
-     color: #ff0909;
+     color: #DB6574;
      font-weight: bold;
      margin-bottom: 10px;
      display: block;
@@ -729,7 +730,7 @@ button {
 }
 
 .main_form .send_btn:hover {
-     background-color: #ff0909;
+     background-color: #DB6574;
      transition: ease-in all 0.5s;
      color: #fff;
 }
@@ -767,7 +768,7 @@ button {
      text-align: left;
      color: #fff;
      margin-bottom: 15px;
-     border-bottom: #ff0909 solid 3px;
+     border-bottom: #DB6574 solid 3px;
      padding-bottom: 3px;
      display: table;
 }
@@ -795,7 +796,7 @@ ul.link_menu li {
 }
 
 ul.link_menu li.active a {
-     color: #ff0909;
+     color: #DB6574;
 }
 
 ul.link_menu li a {
@@ -807,7 +808,7 @@ ul.link_menu li a {
 }
 
 ul.link_menu li a:hover {
-     color: #ff0909;
+     color: #DB6574;
 }
 
 .bottom_form {
@@ -845,7 +846,7 @@ ul.link_menu li a:hover {
      font-size: 17px;
      transition: ease-in all 0.5s;
      background-color: #fff;
-     color: #ff0909;
+     color: #DB6574;
      padding: 8px 0px;
      max-width: 147px;
      width: 100%;
@@ -855,7 +856,7 @@ ul.link_menu li a:hover {
 }
 
 .sub_btn:hover {
-     background-color: #ff0909;
+     background-color: #DB6574;
      transition: ease-in all 0.5s;
      color: #fff;
 }
@@ -882,14 +883,14 @@ ul.social_icon li a {
 }
 
 ul.social_icon li a:hover {
-     color: #ff0909;
+     color: #DB6574;
 }
 
 .copyright {
      margin-top: 60px;
      padding-bottom: 20px;
      background-color: #fff;
-     border: #ff0909 solid 3px;
+     border: #DB6574 solid 3px;
      border-right: inherit;
      border-left: inherit;
 }
@@ -909,7 +910,7 @@ ul.social_icon li a:hover {
 }
 
 .copyright a:hover {
-     color: #ff0909;
+     color: #DB6574;
 }
 
 

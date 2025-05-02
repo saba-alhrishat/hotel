@@ -18,7 +18,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Styles -->
-    <style>
+    {{-- <style>
         .auth-bg {
             background: #f8f1e9; /* لون خلفية بني فاتح */
             min-height: 100vh;
@@ -121,7 +121,138 @@
 
 
 
+    </style> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+        .auth-bg {
+            /* background: #2d3035; */
+             /* الخلفية الرئيسية باللون الداكن الجديد */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        .auth-card {
+            /* الخلفية الداكنة مع شفافية */
+            background: rgba(45, 48, 53, 0.95); 
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            padding: 2.5rem;
+            /* border: 1px solid #3d4046; */
+        }
+        .auth-logo {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .auth-logo img {
+            height: 70px;
+        }
+        .auth-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.75rem;
+            text-align: center;
+            color: #DB6574; /* اللون الأحمر المميز */
+            font-family: 'Poppins', sans-serif;
+        }
+        .auth-input {
+            width: 100%;
+            padding: 0.85rem 1.25rem;
+            /* border: 1px solid #3d4046; */
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            /* background-color: #35393f; */
+            color: #8a8d93; /* لون النص الرمادي */
+        }
+        .auth-input:focus {
+            outline: none;
+            border-color: #DB6574;
+            box-shadow: 0 0 0 3px rgba(219, 101, 116, 0.2);
+        }
+        .auth-button {
+            background: #DB6574; /* اللون الأحمر المميز */
+            color: white;
+            padding: 0.85rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+        .auth-button:hover {
+            background: #c05564; /* لون أحمر داكن عند التمرير */
+            transform: translateY(-2px);
+        }
+        .auth-link {
+            color: #DB6574;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .auth-link:hover {
+            color: #c05564;
+            text-decoration: underline;
+        }
+        .auth-footer {
+            margin-top: 1.75rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8a8d93; /* اللون الرمادي */
+        }
+        .remember-me {
+            color: #8a8d93;
+        }
+        .checkbox:checked {
+            background-color: #DB6574;
+            border-color: #DB6574;
+        }
+        .error-message {
+            color: #DB6574; /* اللون الأحمر للرسائل الخطأ */
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        label {
+            color: white; 
+            font-size: bolder;
+        }
     </style>
+
+
+
+
+
 </head>
 <body class="auth-bg">
     {{ $slot }}

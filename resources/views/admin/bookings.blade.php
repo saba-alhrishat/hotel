@@ -8,8 +8,9 @@
        
        .table_deg{
            
-           border: 2px solid white;
-           margin: auto;
+        border: 1px solid #DB6574;
+        box-shadow: 0 2px 10px #DB6574;
+         margin: auto;
            width: 80%;
            text-align: center;
            margin-top: 40px;
@@ -17,13 +18,13 @@
        }
 
        .th_deg{
-           background-color: skyblue;
+           background-color: #2d3035;
            padding: 8px;
 
        }
        
        tr{
-           border: 3px solid white;
+           border: 1px solid #DB6574;
        }
 
        td
@@ -174,3 +175,6 @@
 
   </body>
 </html>
+
+
+

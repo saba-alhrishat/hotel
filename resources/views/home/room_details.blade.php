@@ -157,7 +157,7 @@ input{
 
 
             <div style="padding-top:20px;">
-               <input type="submit" value="Book Room" class="btn btn-primary"> 
+               <input type="submit" value="Book Room" class="btn btn-primary" style="background-color: #DB6574; border-color: #DB6574;"> 
             </div>
              </form>
               </div>

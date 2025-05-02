@@ -15,8 +15,11 @@
         <div class="page-header">
           <div class="container-fluid">
 
-<center>
-
+<center 
+    style="  
+         border: 1px solid #DB6574;
+        box-shadow: 0 2px 10px #DB6574;">
+<br>
 
             <h1 style="font-size: 40px; font-weight: bolder; color: white;">Gallary</h1>
 

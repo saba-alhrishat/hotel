@@ -4,10 +4,11 @@
     <!-- Sidebar Navigation-->
     <nav id="sidebar">
  
-      <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+      <!-- Sidebar Navidation Menus-->
+      <span class="heading" style="color:white;">Main</span>
       <ul class="list-unstyled">
         <li class="active">
-          <a href="{{url('/')}}"> 
+          <a href="{{url('/home')}}"> 
               <i class="fas fa-home"></i> Home 
           </a>
       </li>

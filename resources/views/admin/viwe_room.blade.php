@@ -3,34 +3,81 @@
   <head> 
   @include('admin.css')
 
-   <style type="text/css">
-      
-        .table_deg{
-           
-            border: 2px solid white;
+
+    <style type="text/css">
+        .table_deg {
+            border: 1px solid #DB6574;
+           box-shadow: 0 2px 10px #DB6574;
             margin: auto;
             width: 80%;
             text-align: center;
             margin-top: 40px;
-
+            border-collapse: collapse;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        .th_deg{
-            background-color: skyblue;
+    
+        .th_deg {
             padding: 15px;
-
+            font-weight: 600;
+            /* color: #333; */
+            color: white;
+            border-bottom: 2px solid #DB6574;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
-        tr{
-            border: 3px solid white;
+        tr {
+            border-bottom: 1px solid #e0e0e0;
         }
-
-        td
-        {
-            padding: 10px
+    
+        tr:last-child {
+            border-bottom: none;
         }
+    
+        td {
+            padding: 12px;
+            color: white;
 
-
+        }
+    
+        .btn {
+            padding: 6px 12px;
+            border-radius: 3px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    
+        .btn-danger {
+            background-color: transparent;
+            color: #DB6574;
+            border-color: #DB6574;
+        }
+    
+        .btn-danger:hover {
+            background-color: #DB6574;
+            color: white;
+        }
+    
+        .btn-warning {
+            background-color: transparent;
+            color: #FFA000;
+            border-color: #FFA000;
+        }
+    
+        .btn-warning:hover {
+            background-color: #FFA000;
+            color: white;
+        }
+    
+        img {
+            border-radius: 3px;
+            border: 1px solid #e0e0e0;
+            max-width: 100px;
+            height: auto;
+        }
     </style>
 
   </head>

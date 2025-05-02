@@ -14,10 +14,8 @@
                 <h3>Menu Link</h3>
                 <ul class="link_menu">
                    <li class="active"><a href="{{url('/')}}">Home</a></li>
-                   {{-- <li><a href="about.html"> about</a></li> --}}
-                   <li><a href="{{url('room_details')}}">Our Room</a></li>
+                   <li><a href="{{url('our_rooms')}}">Our Room</a></li>
                    <li><a href="{{url('viwe_gallary')}}">Gallery</a></li>
-                   {{-- <li><a href="blog.html">Blog</a></li> --}}
                    <li><a href="{{(url('contact_us'))}}">Contact Us</a></li>
                 </ul>
              </div>
@@ -25,7 +23,6 @@
                 <h3>News letter</h3>
                 <form class="bottom_form">
                    <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                   {{-- <button class="sub_btn">subscribe</button> --}}
                 </form>
                 <ul class="social_icon">
                    <li><a href="https://ar-ar.facebook.com/login/device-based/regular/login/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -49,3 +46,10 @@
        </div>
     </div>
  </footer>
+
+
+
+
+
+
+
