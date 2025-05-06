@@ -585,9 +585,18 @@
               <div class="div_deg">
                 <label>Room Type</label>
                 <select name="type" required>
-                  <option value="regular">Regular</option>
-                  <option value="premium">Premium</option>
-                  <option value="delux">Delux</option>
+                  <option value="Standard">Standard Room
+                  </option>
+                  <option value="Deluxe">Deluxe Room
+                  </option>
+                  <option value="Executive">Executive Suite
+                  </option>
+                  <option value="Family">Family Room
+                  </option>
+                  <option value="Honeymoon">Honeymoon Suite
+                  </option>
+                  <option value="Presidential">Presidential Suite
+                  </option>
                 </select>
               </div>
 

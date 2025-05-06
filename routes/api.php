@@ -3,6 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// FLUTTER****************************************************
+
+use App\Http\Controllers\AdminController;
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +24,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// FLUTTER****************************************************
+
+
+Route::get('/rooms', [AdminController::class, 'api_rooms']);

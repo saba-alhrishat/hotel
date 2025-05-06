@@ -300,4 +300,36 @@ public function send_mail($id)
 
 
     }
+
+    // FLUTTER*********************************************
+
+
+
+//     public function api_rooms()
+// {
+//     $rooms = Room::all();
+
+//     foreach ($rooms as $room) {
+//         $room->image = asset('room/' . $room->image);
+//     }
+
+//     return response()->json($rooms);
+// }
+
+
+public function api_rooms()
+{
+    $rooms = Room::all();
+
+    foreach ($rooms as $room) {
+        // التأكد من تحويل المسار بشكل صحيح ليصبح رابطًا صالحًا
+        $room->image = asset('room/' . $room->image);
+    }
+
+    return response()->json($rooms);
+}
+
+
+
+
 }

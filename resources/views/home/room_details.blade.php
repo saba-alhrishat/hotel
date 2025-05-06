@@ -44,7 +44,8 @@ input{
               <div class="col-md-12">
                  <div class="titlepage">
                     <h2>Our Room</h2>
-                    <p>Lorem Ipsum available, but the majority have suffered </p>
+                    <p style="color:gray">Step into a world of comfort and style. Our rooms are elegantly furnished, equipped with premium amenities, and designed to offer a peaceful retreat after a long day
+                    </p>
                  </div>
               </div>
            </div>
@@ -66,7 +67,7 @@ input{
 
                        <h4 style="padding: 12px"> Room Type : {{$room->room_type}}</h4>
 
-                       <h3 style="padding: 12px"> Price : {{$room->price}}$</h3>
+                       <h3 style="padding: 12px"> Price : {{$room->price}}JD</h3>
 
 
 
@@ -189,6 +190,7 @@ input{
     
       <!-- end contact -->
       <!--  footer -->
+
      @include('home.footer')
 
      
