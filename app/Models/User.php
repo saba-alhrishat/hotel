@@ -10,6 +10,11 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+// 
+
+use App\Models\Booking; // Import the Booking model
+
+   
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -25,6 +30,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
@@ -61,4 +67,18 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+//     public function bookings()
+// {
+//      return $this->hasMany(Booking::class);
+// }
+
+
+
+
+public function bookings()
+{
+    return $this->hasMany(Booking::class);
+}
 }

@@ -67,7 +67,7 @@ input{
 
                        <h4 style="padding: 12px"> Room Type : {{$room->room_type}}</h4>
 
-                       <h3 style="padding: 12px"> Price : {{$room->price}}JD</h3>
+                       <h3 style="padding: 12px"> Price : {{$room->price}} JD</h3>
 
 
 
@@ -154,7 +154,38 @@ input{
                <label>End Date </label>
                <input type="date" name="endDate" id="endDate"> 
             </div>
+<br>
 
+<!-- Number of Guests -->
+<div>
+   <label>Number of Guests </label>
+   <input type="number" name="guests" placeholder="Number of Guests" min="1" max="20" value="{{ old('guests') }}">
+   @error('guests')
+       <div style="color:red;">{{ $message }}</div>
+   @enderror
+</div>
+
+<!-- Special Requests -->
+<div>
+   <br>
+   <textarea name="special_requests" placeholder="Special Requests">{{ old('special_requests') }}</textarea>
+   @error('special_requests')
+       <div style="color:red;">{{ $message }}</div>
+   @enderror
+</div>
+
+<!-- Payment Method -->
+<div>
+   <br>
+   <select name="payment_method">
+      <option value="">Select Payment Method</option> 
+      <option value="cash_on_delivery" {{ old('payment_method') == 'cash_on_delivery' ? 'selected' : '' }}>Cash on Delivery</option>
+      <option value="online_payment" {{ old('payment_method') == 'online_payment' ? 'selected' : '' }}>Online Payment</option>
+   </select>
+   @error('payment_method')
+       <div style="color:red;">{{ $message }}</div>
+   @enderror
+</div>
 
 
             <div style="padding-top:20px;">

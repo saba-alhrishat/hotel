@@ -88,6 +88,8 @@ route::get('/hotel_gallary',[HomeController::class,'hotel_gallary']);
 route::get('/contact_us',[HomeController::class,'contact_us']);
 
 
+route::get('/new_users',action: [AdminController::class,'new_users'])
+->middleware(['auth','admin']);
 
 
 
@@ -95,13 +97,19 @@ route::get('/contact_us',[HomeController::class,'contact_us']);
 
 
 
+// للبروفايل
+
+Route::get('/profile', [HomeController::class, 'profile'])->middleware('auth')->name('profile');
+
+Route::get('/my-profile', [HomeController::class, 'profile'])->name('profile');
 
 
 
 
-
-
-
-
-
-
+Route::middleware('auth')->group(function () {
+    // مسار لعرض صفحة البروفايل (GET)
+    Route::get('/my-profile', [HomeController::class, 'show'])->name('profile');
+    
+    // مسار لتحديث البيانات (PUT)
+    Route::put('/my-profile', [HomeController::class, 'update'])->name('profile.update');
+});

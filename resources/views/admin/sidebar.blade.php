@@ -45,6 +45,9 @@
                 <a href="{{url('all_messages')}}"> <i class="fas fa-envelope"></i>Message </a>
               </li>
 
+              <li>
+                <a href="{{url('new_users')}}"> <i class="fas fa-user"></i>Users</a>
+              </li>
 
       </ul>
     </nav>  

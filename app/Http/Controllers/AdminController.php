@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 // use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Room;
@@ -14,6 +13,8 @@ use App\Models\Booking;
 use App\Models\Gallary;
 
 use App\Models\Contact;
+use App\Models\User;
+
 use App\Notifications\SendEmailNotification;
 use Illuminate\Support\Facades\Notification;
 
@@ -23,6 +24,8 @@ class AdminController extends Controller
     public function index()
 
   {
+
+
     if(Auth::id())
     {
         $usertype = Auth()->user()->usertype;
@@ -264,6 +267,17 @@ public function all_messages()
 }
 
 
+
+public function new_users()
+{
+
+
+    $data = User::all();  
+      // $data = Contact::all();
+
+    return view('admin.new_users' , compact('data'));
+}
+
 public function send_mail($id)
 {
     
@@ -292,14 +306,13 @@ public function send_mail($id)
            
         ];
 
-
                 Notification::send($data, new SendEmailNotification($details));
 
                 return redirect()->back();
-
-
-
     }
+
+
+
 
     // FLUTTER*********************************************
 

@@ -1,3 +1,6 @@
+
+
+
 <div class="page-content">
     <div class="page-header">
       <div class="container-fluid">
@@ -49,12 +52,23 @@
             </div>
           </div>
           
+      
+          <div class="col-md-3 col-sm-6">
+            <div class="statistic-block block">
+              <div class="progress-details d-flex align-items-end justify-content-between">
+                <div class="title">
+                  <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>New Rooms</strong>
+                </div>
+                <div class="number dashtext-3">140</div>
+              </div>
+              <div class="progress progress-template">
+                <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-
-
-
 
 
 
