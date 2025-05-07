@@ -96,6 +96,7 @@
             <table class="table_deg">
 
                 <tr>
+                    <th class="th_deg">Room Id</th>
                     <th class="th_deg">Room Title</th>
                     <th class="th_deg">Description</th>
                     <th class="th_deg">Price</th>
@@ -108,6 +109,7 @@
            
              @foreach($data as $data)
                <tr>
+                <td>{{$data->id}}</td>
                 <td>{{$data->room_title}}</td>
                 <td>{!! Str::limit($data->description,150) !!}</td>
                 <td>{{$data->price}}JD</td>

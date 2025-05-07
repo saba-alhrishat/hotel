@@ -15,6 +15,7 @@ class Room extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'id',
         'room_title',
         'image',
         'description',

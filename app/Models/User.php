@@ -9,8 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
 // 
+
+
 
 use App\Models\Booking; // Import the Booking model
 
@@ -36,6 +37,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'usertype',
+        'profile_image',
     ];
 
     /**
@@ -81,4 +83,6 @@ public function bookings()
 {
     return $this->hasMany(Booking::class);
 }
+
 }
+

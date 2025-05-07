@@ -105,7 +105,6 @@ Route::get('/my-profile', [HomeController::class, 'profile'])->name('profile');
 
 
 
-
 Route::middleware('auth')->group(function () {
     // مسار لعرض صفحة البروفايل (GET)
     Route::get('/my-profile', [HomeController::class, 'show'])->name('profile');
@@ -113,3 +112,16 @@ Route::middleware('auth')->group(function () {
     // مسار لتحديث البيانات (PUT)
     Route::put('/my-profile', [HomeController::class, 'update'])->name('profile.update');
 });
+
+
+// صورة
+
+Route::put('/profile/image', [HomeController::class, 'updateImage'])->name('profile.update.image');
+
+
+
+// رول
+
+Route::post('/change-usertype/{id}', [AdminController::class, 'changeUsertype']);
+
+

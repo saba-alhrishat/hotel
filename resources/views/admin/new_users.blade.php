@@ -53,7 +53,14 @@
 
 
 
-
+            @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+        
+        @if(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
+        
 
 
             <table class="table_deg">
@@ -63,8 +70,10 @@
                   <th class="th_deg">Name </th>
                   <th class="th_deg">Email</th>
                   <th class="th_deg">Phone</th>
-                  <th class="th_deg">Send Email</th>
-                
+                  <th class="th_deg">User Type</th>
+                  {{-- <th class="th_deg">Change Type</th> --}}
+                  
+                                  
               </tr>
          
               @foreach ($data as $data )
@@ -75,9 +84,25 @@
                <td>{{$data->email}}</td>
                <td>{{$data->phone}}</td>
  
+            
                <td>
-                 <a href="{{url('send_mail', $data->id)}}"><button class="btn btn-success" style="background-color: #DB6574; border: #DB6574;">Send Email</button></a>
-               </td>
+                @if ($data->usertype == 'admin')
+                  <form method="POST" action="{{ url('change-usertype/' . $data->id) }}">
+                    @csrf
+                    <input type="hidden" name="usertype" value="user">
+                    <button class="btn btn-warning">Make User</button>
+                  </form>
+                @else
+                  <form method="POST" action="{{ url('change-usertype/' . $data->id) }}">
+                    @csrf
+                    <input type="hidden" name="usertype" value="admin">
+                    <button class="btn btn-primary">Make Admin</button>
+                  </form>
+                @endif
+              </td>
+              
+               
+
               
               </tr>
               @endforeach

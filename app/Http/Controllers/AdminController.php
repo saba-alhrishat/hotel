@@ -18,6 +18,9 @@ use App\Models\User;
 use App\Notifications\SendEmailNotification;
 use Illuminate\Support\Facades\Notification;
 
+use Illuminate\Support\Facades\Hash;
+
+
 
 class AdminController extends Controller
 {
@@ -310,6 +313,42 @@ public function send_mail($id)
 
                 return redirect()->back();
     }
+
+
+
+
+    // رول
+
+
+
+
+    public function changeUsertype(Request $request, $id)
+    {
+        $user = \App\Models\User::find($id);
+    
+        if ($user) {
+            $user->usertype = $request->input('usertype');
+            if ($user instanceof \App\Models\User) {
+                if ($user instanceof \App\Models\User) {
+                    $user->save();
+                } else {
+                    return redirect()->back()->with('error', 'User instance not found.');
+                }
+            } else {
+                return redirect()->back()->with('error', 'User instance not found.');
+            }
+    
+            return redirect()->back()->with('success', 'User type updated successfully.');
+        }
+    
+        return redirect()->back()->with('error', 'User not found.');
+    }
+    
+
+
+
+
+
 
 
 

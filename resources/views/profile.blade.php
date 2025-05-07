@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -152,7 +154,43 @@
     <div class="container profile-container">
         <div class="user-info-card">
             <h1 class="mb-4">Welcome {{ Auth::user()->name }} <span class="badge bg-secondary">{{ Auth::user()->usertype }}</span></h1>
-            
+            {{-- هون شات --}}
+
+
+
+
+
+
+
+
+
+
+<!-- Profile Image Upload & Preview -->
+<div class="text-center mb-4">
+    @if(Auth::user()->profile_image)
+        <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image"  width="120" height="120" style="object-fit: cover; border: 2px solid #DB6574;">
+    @else
+        <img src="{{ asset('default-user.png') }}" alt="Default Image"  width="120" height="120" style="object-fit: cover; border: 2px solid #DB6574;">
+    @endif
+
+
+<form method="POST" action="{{ route('profile.update.image') }}" enctype="multipart/form-data" class="mb-4">
+    @csrf
+    @method('PUT')
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <input type="file" class="form-control" name="profile_image" accept="image/*" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-outline-light" style="background-color: #DB6574; color: #f8f9fa;">Upload</button>
+        </div>
+    </div>
+</form>
+     
+</div>
+
+
+
             <!-- Form for editing user info -->
             <form method="POST" action="{{ route('profile.update') }}" class="mt-4">
                 @csrf
@@ -173,44 +211,69 @@
                         <label for="phone" class="form-label">Phone</label>
                         <input type="text" class="form-control" id="phone" name="phone" value="{{ Auth::user()->phone }}" required>
                     </div>
+
+                    {{-- <div class="col-md-4">
+                        <label for="password" class="form-label">password</label>
+                        <input type="password" class="form-control" id="password" name="password" value="{{ Auth::user()->password }}" required>
+                    </div> --}}
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+                
                 
                 <div class="d-flex justify-content-between">
                     <div>
-                        @if(Auth::user()->usertype === 'admin')
+                        {{-- @if(Auth::user()->usertype === 'admin')
                             <a href="{{ route('home') }}" class="dashboard-btn"  style="background-color: #1a1c20;">
                                 <i class="fas fa-tachometer-alt"></i> Dashboard
                             </a>
-                        @endif
+                        @endif --}}
                         
                         <button type="submit" class="dashboard-btn" style="background-color: #DB6574; color: white;">
                             <i class="fas fa-save"></i> Update Profile
                         </button>
                     </div>
-                    
-                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                        @csrf
-                        <button type="submit" class="logout-btn">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-                        </button>
-                    </form>
+                 
                 </div>
             </form>
         </div>
 
         @if(Auth::user()->usertype === 'admin')
-            <div class="alert alert-danger">
+            <div class="alert alert-danger"  style="background-color: #d6d8da; box-shadow: 0 2px 5px #DB6574;">
                 <h4>You are logged in as <strong>Admin</strong></h4>
                 <p>Here you can manage the system, view bookings, statistics, and manage users.</p>
             </div>
+            <div class="d-flex justify-content-between">
+                <div>
+                    @if(Auth::user()->usertype === 'admin')
+                        <a href="{{ route('home') }}" class="dashboard-btn"  style="background-color: #1a1c20;">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    @endif
+                    
+                    {{-- <button type="submit" class="dashboard-btn" style="background-color: #DB6574; color: white;">
+                        <i class="fas fa-save"></i> Update Profile
+                    </button>
+                </div> --}}
+             
+            </div>
         @else
-            <div class="alert alert-primary" style="background-color: #de98a3dd; color: white; border: #DB6574;">
+            <div class="alert alert-primary"  style="background-color: #d6d8da; box-shadow: 0 2px 5px #DB6574;">
                 <h4>You are logged in as a regular user</h4>
                 <p>Here you can view your information, booking history, and update your details.</p>
             </div>
             <div class="booking-table">
                 <br>
-                <h5 class="mb-6" style="color: white; display:flex; justify-content: center;">Your Booking History</h5>
+                <h5 class="mb-6" style="color: black; display:flex; justify-content: center; font-size: larger;">Your Booking History</h5>
                 
                 @if(isset($bookings) && $bookings->isEmpty())
                     <div class="alert alert-info">You currently have no bookings.</div>
@@ -250,9 +313,8 @@
         @endif
     </div>
 
-    <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
@@ -289,5 +351,11 @@
             });
         });
     </script>
+
+
+
+
+
+
 </body>
 </html>

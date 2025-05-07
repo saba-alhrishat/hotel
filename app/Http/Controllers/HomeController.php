@@ -11,6 +11,8 @@ use App\Models\Booking;
 use App\Models\Contact;
 use App\Models\Gallary;
 
+
+
 class HomeController extends Controller
 {
     public function room_details($id)
@@ -104,27 +106,58 @@ class HomeController extends Controller
     }
 
 
+
+
 // للبروفايل
 
-    public function profile()
+//     public function profile()
+// {
+//     $user = Auth::user();
+
+//     if (!$user instanceof \App\Models\User) {
+//         return back()    if (!$user) {
+//         return redirect()->route('login');
+//     }
+
+//     $bookings = Booking::where('user_id', $user->id)
+//                        ->with(['room', 'user'])
+//                        ->get();
+
+//                     //    dd($bookings);
+
+//     return view('profile', compact('bookings', 'user'));
+// }
+// }
+
+
+
+public function profile()
 {
     $user = Auth::user();
+
+    // التحقق من وجود المستخدم
     if (!$user) {
         return redirect()->route('login');
+    }
+
+    // التحقق من نوع الكائن
+    if (!$user instanceof \App\Models\User) {
+        return back();
     }
 
     $bookings = Booking::where('user_id', $user->id)
                        ->with(['room', 'user'])
                        ->get();
 
-                    //    dd($bookings);
-
     return view('profile', compact('bookings', 'user'));
 }
 
 
-// بعد التحديث
 
+
+
+
+// بعد التحديث
 
 
 public function show()
@@ -144,6 +177,8 @@ public function update(Request $request)
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email,'.$user->id,
         'phone' => 'required|string|max:20',
+ 
+
     ]);
 
     // تحديث بيانات المستخدم
@@ -153,11 +188,46 @@ public function update(Request $request)
     $user->bookings()->update([
         'name' => $request->name,
         'email' => $request->email,
-        'phone' => $request->phone
+        'phone' => $request->phone,
+      
     ]);
     
     return redirect()->route('profile')->with('success', 'Profile updated successfully!');
 }
+
+
+
+
+// صورة
+
+
+public function updateImage(Request $request)
+{
+    $request->validate([
+        'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+    ]);
+
+    $user = Auth::user();
+    if ($user && $request->hasFile('profile_image')) {
+        $imagePath = $request->file('profile_image')->store('profile_images', 'public');
+        $user->profile_image = $imagePath;
+        if ($user instanceof \App\Models\User) {
+            $user->save();
+        } else {
+            return back()->withErrors('User instance is invalid.');
+        }
+    }
+
+    return back()->with('success', 'Profile image updated successfully!');
+}
+
+
+
+
+
+
+
+
 
 
 
