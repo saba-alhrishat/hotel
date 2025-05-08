@@ -349,6 +349,84 @@ public function send_mail($id)
 
 
 
+// لحذف اليوزر 
+
+
+
+
+
+public function deleteUser($id)
+{
+    $user = User::find($id);
+
+    if ($user) {
+        $user->delete(); // Soft delete
+        return redirect()->back()->with('success', 'User deleted successfully.');
+    }
+
+    return redirect()->back()->with('error', 'User not found.');
+}
+
+
+
+// تعديل بيانات اليوزر 
+
+
+public function edit($id)
+{
+    $user = User::findOrFail($id);
+    return view('admin.edit-user', compact('user'));
+
+
+    if (auth()->user()->usertype != 'admin') {
+        return redirect()->back()->with('error', 'You are not authorized to perform this action');
+    }
+    
+    
+}
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,'.$id,
+        'phone' => 'nullable|string',
+        'usertype' => 'required|in:user,admin'
+    ]);
+
+    $user = User::findOrFail($id);
+    $user->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'phone' => $request->phone,
+        'usertype' => $request->usertype
+    ]);
+
+    return redirect()->back()->with('success', 'User updated successfully');
+   
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

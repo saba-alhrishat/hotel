@@ -125,3 +125,19 @@ Route::put('/profile/image', [HomeController::class, 'updateImage'])->name('prof
 Route::post('/change-usertype/{id}', [AdminController::class, 'changeUsertype']);
 
 
+// لحذف اليوزر 
+
+
+Route::delete('delete-user/{id}', [AdminController::class, 'deleteUser']);
+
+
+// لتعديل بيانات اليوزر 
+
+// عرض نموذج التعديل
+Route::get('/edit-user/{id}', [AdminController::class, 'edit'])->name('user.edit');
+
+// معالجة التعديل
+Route::put('/update-user/{id}', [AdminController::class, 'update'])->name('user.update');
+
+
+

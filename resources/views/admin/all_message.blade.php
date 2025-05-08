@@ -59,6 +59,7 @@
             <table class="table_deg">
 
               <tr>
+                <th class="th_deg">Id </th>
                   <th class="th_deg">Name </th>
                   <th class="th_deg">Email</th>
                   <th class="th_deg">Phone</th>
@@ -70,6 +71,7 @@
               @foreach ($data as $data )
                 
              <tr>
+              <td>{{$data->id}}</td>
               <td>{{$data->name}}</td>
               <td>{{$data->email}}</td>
               <td>{{$data->phone}}</td>

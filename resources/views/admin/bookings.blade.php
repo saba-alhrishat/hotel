@@ -285,6 +285,8 @@
                     <thead>
                         <tr>
                             <th>Room ID</th>
+                           
+
                             <th>Customer</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -303,7 +305,9 @@
                     <tbody>
                   @foreach ($data as $data)
                    <tr>
-                    <td>{{$data->room_id}}</td>
+                    <td>{{$data->room_id}}</td>  
+        
+
                     <td>{{$data->name}}</td>
                     <td>{{$data->email}}</td>
                     <td>{{$data->phone}}</td>

@@ -8,7 +8,7 @@
       <span class="heading" style="color:white;">Main</span>
       <ul class="list-unstyled">
         <li class="active">
-          <a href="{{url('/home')}}"> 
+          <a href="{{url('/')}}"> 
               <i class="fas fa-home"></i> Home 
           </a>
       </li>
