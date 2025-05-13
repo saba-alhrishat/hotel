@@ -267,7 +267,7 @@
              
             </div>
         @else
-            <div class="alert alert-primary"  style="background-color: #d6d8da; box-shadow: 0 2px 5px #DB6574;">
+            <div class="alert alert-primary" style="background-color: #ebe5e664; color: black; border: #DB6574;">
                 <h4>You are logged in as a regular user</h4>
                 <p>Here you can view your information, booking history, and update your details.</p>
             </div>
@@ -294,15 +294,17 @@
                                         <td>{{ $booking->room->room_title ?? 'Not specified' }}</td>
                                         <td>{{ $booking->start_date }}</td>
                                         <td>{{ $booking->end_date }}</td>
+                                        {{-- <td>{{ $booking->status }}</td> --}}
                                         <td>
-                                            @if($booking->status == 'approved')
+                                            @if($booking->status == 'approve')
                                                 <span class="badge bg-success">Confirmed</span>
-                                            @elseif($booking->status == 'pending')
-                                                <span class="badge bg-warning text-dark">Pending</span>
+                                            @elseif($booking->status == 'rejected')
+                                                <span class="badge bg-danger" >rejected</span>
                                             @else
-                                                <span class="badge bg-danger">Cancelled</span>
+                                                <span class="badge bg-warning text-dark">Pending</span>
                                             @endif
                                         </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>

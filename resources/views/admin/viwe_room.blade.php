@@ -78,6 +78,41 @@
             max-width: 100px;
             height: auto;
         }
+
+/* للبار */
+
+
+/* تنسيق Pagination */
+.pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    background-color: #2d3035;
+    border: 1px solid #DB6574;
+    border-radius: 4px;
+}
+
+.pagination li a {
+    color: white;
+    padding: 8px 16px;
+    display: block;
+    text-decoration: none;
+}
+
+.pagination li.active a {
+    background-color: #DB6574;
+}
+
+.pagination li:hover:not(.active) {
+    background-color: #3a3f44;
+}
+
     </style>
 
   </head>
@@ -107,26 +142,26 @@
                     <th class="th_deg">Update</th>
                 </tr>
            
-             @foreach($data as $data)
+             @foreach($data as $room)
                <tr>
-                <td>{{$data->id}}</td>
-                <td>{{$data->room_title}}</td>
-                <td>{!! Str::limit($data->description,150) !!}</td>
-                <td>{{$data->price}}JD</td>
-                <td>{{$data->wifi}}</td>
-                <td>{{$data->room_type}}</td>
-                <td><img width="100" src="/room/{{$data->image}}"></td>
+                <td>{{$room->id}}</td>
+                <td>{{$room->room_title}}</td>
+                <td>{!! Str::limit($room->description,150) !!}</td>
+                <td>{{$room->price}}JD</td>
+                <td>{{$room->wifi}}</td>
+                <td>{{$room->room_type}}</td>
+                <td><img width="100" src="/room/{{$room->image}}"></td>
                 {{-- <td>
                 <a  onclick="return confirm('Are you sure to delete this')" class="btn btn-danger" href="{{url('room_delete' ,$data->id)}}">Delete</a>    
                 </td> --}}
 
                 {{-- سويت اليرت --}}
                 <td>
-                    <a href="{{url('room_delete' ,$data->id)}}" class="btn btn-danger delete-btn" data-id="{{ $data->id }}">Delete</a>
+                    <a href="{{url('room_delete' ,$room->id)}}" class="btn btn-danger delete-btn" data-id="{{ $room->id }}">Delete</a>
                 </td>
 
                 <td>
-                    <a class="btn btn-warning" href="{{url('room_update' ,$data->id)}}">Update</a>    
+                    <a class="btn btn-warning" href="{{url('room_update' ,$room->id)}}">Update</a>    
                     </td>
 
                </tr>
@@ -134,6 +169,11 @@
                @endforeach
 
             </table>
+
+<!-- Pagination Links -->
+<div class="d-flex justify-content-center mt-4 mb-4">
+    {{ $data->links() }}
+</div>
 
           </div>
         </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +52,10 @@ route::post('/add_booking/{id}',[HomeController::class,'add_booking']);
 route::get('/bookings',[AdminController::class,'bookings'])
 
 ->middleware(['auth','admin']);
+
+
+
+
 
 route::get('/delete_booking/{id}',[AdminController::class,'delete_booking'])
 ->middleware(['auth','admin']);
@@ -138,6 +143,12 @@ Route::get('/edit-user/{id}', [AdminController::class, 'edit'])->name('user.edit
 
 // معالجة التعديل
 Route::put('/update-user/{id}', [AdminController::class, 'update'])->name('user.update');
+
+
+
+// للاحصائيات
+
+// Route::get('/admin/index', [AdminController::class, 'dashboard'])->name('dashboard');
 
 
 

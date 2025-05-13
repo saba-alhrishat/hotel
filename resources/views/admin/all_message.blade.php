@@ -36,6 +36,37 @@
     }
 
 
+/* للبار*/
+
+
+.pagination {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    background-color: #2d3035;
+    border: 1px solid #DB6574;
+    border-radius: 4px;
+}
+
+.pagination li a {
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.pagination li.active {
+    background-color: #DB6574;
+}
+
+.pagination li:hover:not(.active) {
+    background-color: #3a3f44;
+}
+
 </style>
 
   </head>
@@ -44,6 +75,7 @@
 
 
    @include('admin.sidebar')
+
 
       <!-- Sidebar Navigation end-->
      
@@ -58,6 +90,8 @@
 
             <table class="table_deg">
 
+
+
               <tr>
                 <th class="th_deg">Id </th>
                   <th class="th_deg">Name </th>
@@ -68,17 +102,18 @@
                 
               </tr>
          
-              @foreach ($data as $data )
+              {{-- @foreach ($data as $data ) --}}
+              @foreach ($data as $message)
                 
              <tr>
-              <td>{{$data->id}}</td>
-              <td>{{$data->name}}</td>
-              <td>{{$data->email}}</td>
-              <td>{{$data->phone}}</td>
-              <td>{{$data->message}}</td>
+              <td>{{$message->id}}</td>
+              <td>{{$message->name}}</td>
+              <td>{{$message->email}}</td>
+              <td>{{$message->phone}}</td>
+              <td>{{$message->message}}</td>
 
               <td>
-                <a href="{{url('send_mail', $data->id)}}"><button class="btn btn-success" style="background-color: #DB6574; border: #DB6574;">Send Email</button></a>
+                <a href="{{url('send_mail', $message->id)}}"><button class="btn btn-success" style="background-color: #DB6574; border: #DB6574;">Send Email</button></a>
               </td>
              
              </tr>
@@ -88,7 +123,11 @@
           </table>
 
 
+{{-- للبار --}}
 
+<div class="d-flex justify-content-center mt-4">
+  {{ $data->links() }}
+</div>
 
 
 

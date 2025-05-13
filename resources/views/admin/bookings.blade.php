@@ -271,6 +271,41 @@
                font-size: 14px;
            }
        }
+
+
+       /* للبار */
+
+
+       /* تنسيق Pagination */
+.pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    background-color: #2d3035;
+    border: 1px solid #DB6574;
+    border-radius: 4px;
+}
+
+.pagination li a {
+    color: white;
+    padding: 8px 16px;
+    display: block;
+    text-decoration: none;
+}
+
+.pagination li.active a {
+    background-color: #DB6574;
+}
+
+.pagination li:hover:not(.active) {
+    background-color: #3a3f44;
+}
     </style>
   </head>
 
@@ -302,43 +337,56 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
+
+
+
+                    
                     <tbody>
-                  @foreach ($data as $data)
+                    
+
+                  {{-- @foreach ($data as $data) --}}
+                  @foreach ($data as $booking)
                    <tr>
-                    <td>{{$data->room_id}}</td>  
+                    <td>{{$booking->room_id}}</td>  
         
 
-                    <td>{{$data->name}}</td>
-                    <td>{{$data->email}}</td>
-                    <td>{{$data->phone}}</td>
-                    <td>{{$data->start_date}}</td>
-                    <td>{{$data->end_date}}</td>
-                    <td>{{$data->guests}}</td>
-                    <td style="max-width: 150px; white-space: normal;">{{$data->special_requests}}</td>
-                    <td>{{$data->payment_method}}</td>
+                    <td>{{$booking->name}}</td>
+                    <td>{{$booking->email}}</td>
+                    <td>{{$booking->phone}}</td>
+                    <td>{{$booking->start_date}}</td>
+                    <td>{{$booking->end_date}}</td>
+                    <td>{{$booking->guests}}</td>
+                    <td style="max-width: 150px; white-space: normal;">{{$booking->special_requests}}</td>
+                    <td>{{$booking->payment_method}}</td>
                     <td>
-                        @if($data->status == 'approve')
+                        @if($booking->status == 'approve')
                         <span class="status-approve">Approved</span>
-                        @elseif($data->status == 'rejected')
+                        @elseif($booking->status == 'rejected')
                         <span class="status-rejected">Rejected</span>
                         @else
                         <span class="status-pending">Pending</span>
                         @endif
                     </td>
-                    <td>{{$data->room->room_title}}</td>
-                    <td>{{$data->room->price}}</td>
-                    <td><img src="/room/{{$data->room->image}}" alt="Room" style="max-width: 80px;"></td>
+                    <td>{{$booking->room->room_title}}</td>
+                    {{-- <td>{{$data->room_title}}</td> --}}
+                    <td>{{$booking->room->price}}</td>
+                    <td><img src="/room/{{$booking->room->image}}" alt="Room" style="max-width: 80px;"></td>
                     <td>
                         <div class="action-buttons">
-                            <a href="#" class="btn btn-danger delete-button" data-id="{{$data->id}}">Delete</a>
-                            <a href="{{url('approve_book',$data->id)}}" class="btn btn-success">Approve</a>
-                            <a href="{{url('reject_book',$data->id)}}" class="btn btn-warning">Reject</a>
+                            <a href="#" class="btn btn-danger delete-button" data-id="{{$booking->id}}">Delete</a>
+                            <a href="{{url('approve_book',$booking->id)}}" class="btn btn-success">Approve</a>
+                            <a href="{{url('reject_book',$booking->id)}}" class="btn btn-warning">Reject</a>
                         </div>
                     </td>
                    </tr>
                   @endforeach
                     </tbody>
                 </table>
+               
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $data->links() }}
+                  </div>
+                
             </div>
           </div>
         </div>
@@ -373,5 +421,7 @@
               });
           });
       </script>
+
+      
   </body>
 </html>

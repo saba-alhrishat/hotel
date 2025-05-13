@@ -5,7 +5,7 @@
          {{-- <p class="no-margin-bottom">2018 &copy; Your company. Download From <a target="_blank" href="https://templateshub.net">Templates Hub</a>.</p> --}}
 
          <p class="no-margin-bottom">
-          &copy; {{ now()->year }} <span class="text-brown-600 font-semibold">Luxury Retreat Suites</span>. 
+          &copy; {{ now()->year }} <span class="text-brown-600 font-semibold">LUXLODGE</span>. 
            Booking System. 
           All Rights Reserved. 
       </p>
@@ -31,3 +31,5 @@
 {{-- سويت اليرت --}}
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+

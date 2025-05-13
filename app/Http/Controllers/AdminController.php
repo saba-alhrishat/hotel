@@ -52,6 +52,9 @@ class AdminController extends Controller
         }   
     }
 
+  
+    
+
   }
 
 public function home()
@@ -103,13 +106,23 @@ return redirect()->back();
 
 
 
+// public function viwe_room()
+// {
+//     $data = Room::all();
+//     return view('admin.viwe_room' , compact('data'));
+// }
+
+
+
+// للبار
+
+
+
 public function viwe_room()
 {
-    $data = Room::all();
-    return view('admin.viwe_room' , compact('data'));
+    $data = Room::orderBy('id', 'desc')->paginate(5);
+    return view('admin.viwe_room', compact('data'));
 }
-
-
 
 public function room_delete($id)
 {
@@ -158,16 +171,30 @@ public function edit_room(Request $request, $id)
     return redirect()->back();
 }
 
+// public function bookings()
+// {
+//     $data =Booking::all();
+
+//     return view('admin.bookings', compact('data'));
+// }
+
+
+// للبار
+
 public function bookings()
 {
-    $data =Booking::all();
-
+    $data = Booking::with('room')  // تحميل العلاقة مسبقاً لتحسين الأداء
+                 ->orderBy('created_at', 'desc')
+                 ->paginate(5);  // 10 حجوزات لكل صفحة
+    
     return view('admin.bookings', compact('data'));
 }
+
 
 public function delete_booking($id)
 {
     $data = Booking::findOrFail($id);
+
 
     $data->delete();
 
@@ -202,7 +229,6 @@ public function viwe_gallary()
 {
     $gallary= Gallary::all();
     return view('admin.gallary', compact('gallary'));
-
 }
 
 public function upload_gallary(Request $request)
@@ -260,26 +286,42 @@ public function delete_gallary($id)
 
 
 
+// public function all_messages()
+// {
+//     $data = Contact::all();
+
+//     return view('admin.all_message' , compact('data'));
+
+// }
+
+
+// للبار
+
+
 public function all_messages()
 {
-
-
-    $data = Contact::all();
-
-    return view('admin.all_message' , compact('data'));
+    $data = Contact::orderBy('id', 'desc')->paginate(5); 
+    return view('admin.all_message', compact('data'));
 }
 
 
+// public function new_users()
+// {
+
+//     $data = User::all();  
+//       // $data = Contact::all();
+
+//     return view('admin.new_users' , compact('data'));
+// }
+
+// للبار
 
 public function new_users()
 {
-
-
-    $data = User::all();  
-      // $data = Contact::all();
-
-    return view('admin.new_users' , compact('data'));
+    $data = User::orderBy('created_at', 'desc')->paginate(5); // 10 مستخدمين لكل صفحة
+    return view('admin.new_users', compact('data'));
 }
+
 
 public function send_mail($id)
 {
@@ -324,7 +366,7 @@ public function send_mail($id)
 
     public function changeUsertype(Request $request, $id)
     {
-        $user = \App\Models\User::find($id);
+        $user = \App\Models\User::findOrFail($id);
     
         if ($user) {
             $user->usertype = $request->input('usertype');
@@ -408,6 +450,7 @@ public function update(Request $request, $id)
 }
 
 
+// للاحصائيات
 
 
 
@@ -415,16 +458,15 @@ public function update(Request $request, $id)
 
 
 
+// public function dashboard()
+// {
+//     $newUser = User::count();
+//     $newBookings = Booking::count();
+//     // $newMessages = Message::count(); // غيّريها حسب اسم الموديل عندك
+//     $newRooms = Room::count();
 
-
-
-
-
-
-
-
-
-
+//     return view('admin.body', compact('newUser', 'newBookings', 'newRooms'));
+// }
 
 
 
