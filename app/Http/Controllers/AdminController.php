@@ -449,24 +449,160 @@ public function update(Request $request, $id)
 
 }
 
-
-// للاحصائيات
-
-
+// ********************************************************
+// تعديل اليوزر بياناته
 
 
-
-
-
-// public function dashboard()
+// public function editBooking($id)
 // {
-//     $newUser = User::count();
-//     $newBookings = Booking::count();
-//     // $newMessages = Message::count(); // غيّريها حسب اسم الموديل عندك
-//     $newRooms = Room::count();
+//     $booking = Booking::findOrFail($id);
 
-//     return view('admin.body', compact('newUser', 'newBookings', 'newRooms'));
+//     if ($booking->user_id != auth()->id()) {
+//         return redirect()->back()->with('error', 'Unauthorized action.');
+//     }
+
+//     $rooms = Room::all();
+
+//     return view('admin.edit-booking', compact('booking', 'rooms'));
 // }
+
+
+
+
+// public function update_booking(Request $request, $id)
+// {
+//     $request->validate([
+//         'room_type' => 'required|string|max:255',
+//         'startDate' => 'required|date|before_or_equal:endDate',
+//         'endDate' => 'required|date|after_or_equal:startDate',
+//         'phone' => 'required|regex:/^[0-9]+$/|min:8|max:15',
+//         'guests' => 'required|integer|min:1|max:20',
+//         'special_requests' => 'nullable|string|max:1000',
+//         'payment_method' => 'required|in:cash_on_delivery,online_payment',
+//     ]);
+
+//     $booking = Booking::findOrFail($id);
+
+//     // تحديث اسم الغرفة
+//     $room = Room::find($booking->room_id);
+//     if ($room) {
+//         $room->name = $request->room_type;
+//         $room->save();
+//     }
+
+//     // تحقق من أن الغرفة غير محجوزة في التواريخ الجديدة (باستثناء الحجز الحالي)
+//     $conflict = Booking::where('room_id', $booking->room_id)
+//         ->where('id', '!=', $booking->id)
+//         ->where('start_date', '<=', $request->endDate)
+//         ->where('end_date', '>=', $request->startDate)
+//         ->exists();
+
+//     if ($conflict) {
+//         return redirect()->back()->with('error', 'Room is already booked in this period.');
+//     }
+
+//     // التحديث
+//     $booking->start_date = $request->startDate;
+//     $booking->end_date = $request->endDate;
+//     $booking->phone = $request->phone;
+//     $booking->guests = $request->guests;
+//     $booking->special_requests = $request->special_requests;
+//     $booking->payment_method = $request->payment_method;
+//     $booking->updated_at = now();
+//     $booking->save();
+
+//     return redirect()->back()->with('success', 'Booking updated successfully!');
+// }
+
+
+
+
+
+
+
+// للسيرش
+
+
+// viwe_room
+public function showRooms(Request $request)
+{
+    $search = $request->input('search');
+
+    $data = Room::when($search, function ($query, $search) {
+        return $query->where('room_title', 'like', "%$search%")
+                     ->orWhere('room_type', 'like', "%$search%")
+                     ->orWhere('price', 'like', "%$search%")
+                     ->orWhere('wifi', 'like', "%$search%");
+    })->paginate(5);
+
+    return view('admin.viwe_room', compact('data'));
+}
+
+
+
+// bookings
+
+public function show_booking(Request $request)
+{
+    $search = $request->input('search');
+
+    if ($search) {
+        $data = Booking::with('room')
+            ->where('name', 'like', '%' . $search . '%')
+            ->orWhere('email', 'like', '%' . $search . '%')
+            ->orWhere('phone', 'like', '%' . $search . '%')
+            ->orWhere('payment_method', 'like', '%' . $search . '%')
+            ->orWhereHas('room', function ($query) use ($search) {
+                $query->where('room_title', 'like', '%' . $search . '%');
+            })
+            ->paginate(10);
+    } else {
+        $data = Booking::with('room')->paginate(10);
+    }
+
+    return view('admin.bookings', compact('data'));
+}
+
+
+
+// all_messages
+
+
+public function show_messages(Request $request)
+{
+    $search = $request->input('search');
+
+    if ($search) {
+        $data = Contact::where('name', 'like', '%' . $search . '%')
+            ->orWhere('email', 'like', '%' . $search . '%')
+            ->orWhere('phone', 'like', '%' . $search . '%')
+            ->orWhere('message', 'like', '%' . $search . '%')
+            ->paginate(10);
+    } else {
+        $data = Contact::paginate(10);
+    }
+
+return view('admin.all_message', compact('data'));
+}
+
+
+// new_users
+public function searchUser(Request $request)
+{
+    $query = $request->input('search'); // بدل query إلى search
+
+    $data = User::where('name', 'like', "%$query%")
+        ->orWhere('email', 'like', "%$query%")
+        ->orWhere('phone', 'like', "%$query%")
+        ->paginate(10);
+
+    return view('admin.new_users', compact('data'));
+}
+
+
+
+
+
 
 
 
@@ -477,31 +613,71 @@ public function update(Request $request, $id)
 
 
 
-//     public function api_rooms()
-// {
-//     $rooms = Room::all();
-
-//     foreach ($rooms as $room) {
-//         $room->image = asset('room/' . $room->image);
-//     }
-
-//     return response()->json($rooms);
-// }
-
-
-public function api_rooms()
+    public function api_rooms()
 {
     $rooms = Room::all();
 
-    foreach ($rooms as $room) {
-        // التأكد من تحويل المسار بشكل صحيح ليصبح رابطًا صالحًا
-        $room->image = asset('room/' . $room->image);
-    }
+    // foreach ($rooms as $room) {
+    //     $room->image = asset('room/' . $room->image);
+    // }
 
     return response()->json($rooms);
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+   public function api_sign_in(Request $request)
+    {
+        // Validate the incoming data
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+
+        // Find the user by email
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            // If user not found, return error response
+            return response()->json([
+                'success' => false,
+                'message' => 'These credentials do not match our records.',
+            ], 401); // 401 Unauthorized
+        }
+
+        // Compare the given password with the hashed password in the database
+        if (Hash::check($request->password, $user->password)) {
+            // If the password matches, return user data
+            return response()->json([
+                'success' => true,
+                'message' => 'Login successful',
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    // Add any other fields you need to return
+                ],
+            ], 200); // 200 OK
+        } else {
+            // If password does not match, return error response
+            return response()->json([
+                'success' => false,
+                'message' => 'These credentials do not match our records.',
+            ], 401); // 401 Unauthorized
+        }
+    }
 
 }

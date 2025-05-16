@@ -191,6 +191,8 @@ public function update(Request $request)
         'phone' => $request->phone,
       
     ]);
+
+
     
     return redirect()->route('profile')->with('success', 'Profile updated successfully!');
 }

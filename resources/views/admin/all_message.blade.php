@@ -84,6 +84,10 @@
           <div class="container-fluid">
 
 
+<form method="GET" action="{{ url('/show_messages') }}" class="mb-4 d-flex justify-content-center">
+    <input type="text" name="search" placeholder="Search messages..." class="form-control w-25 me-2" value="{{ request('search') }}">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
 
 

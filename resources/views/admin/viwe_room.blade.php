@@ -120,6 +120,8 @@
    @include('admin.header')
 
 
+
+
    @include('admin.sidebar')
 
       <!-- Sidebar Navigation end-->
@@ -127,6 +129,27 @@
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
+
+
+
+
+
+
+
+
+          
+          
+<form method="GET" action="{{ url('show_rooms') }}" class="mb-4 d-flex justify-content-center">
+    <input type="text" name="search" placeholder="Search rooms..." class="form-control w-25 me-2" value="{{ request('search') }}">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
+
+
+
+
+
 
             <table class="table_deg">
 

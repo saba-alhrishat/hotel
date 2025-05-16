@@ -132,6 +132,13 @@
           <div class="container-fluid">
 
 
+<form action="{{ url('search-user') }}" method="GET" class="mb-4 d-flex justify-content-center">
+    <input type="text" name="search" placeholder="Search user..." class="form-control w-25 me-2" value="{{ request('search') }}">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
+
 
             @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>

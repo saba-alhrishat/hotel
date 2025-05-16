@@ -315,8 +315,22 @@
 
       <div class="page-content">
         <div class="container-fluid">
+            <br>
+
+                <form method="GET" action="{{ url('/show_booking') }}" class="mb-4 d-flex justify-content-center">
+    <input type="text" name="search" placeholder="Search booking..." class="form-control w-25 me-2" value="{{ request('search') }}">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
             <div class="table-container">
+
+
+  
+
+
                 <table class="table_deg">
+
+
                     <thead>
                         <tr>
                             <th>Room ID</th>

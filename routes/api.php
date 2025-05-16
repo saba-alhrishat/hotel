@@ -30,3 +30,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/rooms', [AdminController::class, 'api_rooms']);
+Route::post('/signin', [AdminController::class, 'api_sign_in']);

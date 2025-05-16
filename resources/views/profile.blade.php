@@ -286,6 +286,7 @@
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th>Status</th>
+                                    {{-- <th>Edit</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -304,6 +305,12 @@
                                                 <span class="badge bg-warning text-dark">Pending</span>
                                             @endif
                                         </td>
+
+                                        {{-- للتعديل --}}
+
+                                    {{-- <td>
+                            <a href="{{ route('booking.editBooking', $booking->id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+                                    </td> --}}
 
                                     </tr>
                                 @endforeach

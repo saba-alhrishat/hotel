@@ -146,9 +146,26 @@ Route::put('/update-user/{id}', [AdminController::class, 'update'])->name('user.
 
 
 
-// للاحصائيات
-
-// Route::get('/admin/index', [AdminController::class, 'dashboard'])->name('dashboard');
 
 
 
+
+// *******************************************
+// للتعديل اليوزر ع بياناته
+
+// عرض نموذج تعديل الحجز
+// Route::get('/edit-booking/{id}', [AdminController::class, 'editBooking'])->name('booking.editBooking');
+
+// // تحديث بيانات الحجز
+// Route::put('/booking/update/{id}', [AdminController::class, 'update_booking'])->name('booking.update');
+
+
+
+// سيرش
+
+
+Route::get('show_rooms', [AdminController::class, 'showRooms']); 
+Route::get('show_booking', [AdminController::class, 'show_booking']); 
+Route::get('show_messages', [AdminController::class, 'show_messages']); 
+
+Route::get('/search-user', [AdminController::class, 'searchUser']);
