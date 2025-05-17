@@ -245,12 +245,28 @@
 
 
 
-
-
           </div>
         </div>
       </div>
         @include('admin.footer')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <script>
           document.addEventListener('DOMContentLoaded', function () {

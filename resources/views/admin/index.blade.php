@@ -13,12 +13,14 @@
      
       @include('admin.body')
 
-      {{-- @include('admin.body', ['newUser' => $newUser]) --}}
 
 
       
         @include('admin.footer')
         
+
+
+
 
 
   </body>

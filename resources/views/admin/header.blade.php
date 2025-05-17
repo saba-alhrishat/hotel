@@ -3,29 +3,7 @@
 <header class="header">   
     <nav class="navbar navbar-expand-lg">
 
-      {{-- search --}}
-
-
-      {{-- <div class="search-panel">
-        <div class="search-inner d-flex align-items-center justify-content-center">
-          <div class="close-btn">Close <i class="fa fa-close"></i></div>
-         <form id="searchForm" action="{{ route('admin.search') }}" method="GET">
-  <div class="form-group">
-    <input type="search" name="search" placeholder="What are you searching for..." required>
-
-    
-    <button type="submit" class="submit">Search</button>
-  </div>
-</form>
-        </div>
-      </div> --}}
-
-
-
-
-
-
-
+   
 
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
@@ -60,21 +38,7 @@
     </nav>
 
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- Font Awesome CSS -->
 
   </header>
 
@@ -100,3 +64,4 @@
       });
     });
   </script>
+

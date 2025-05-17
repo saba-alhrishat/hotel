@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Hash;
 
 
 
+
+
 class AdminController extends Controller
 {
     public function index()
@@ -52,8 +54,10 @@ class AdminController extends Controller
         }   
     }
 
-  
-    
+
+
+
+
 
   }
 
@@ -181,14 +185,32 @@ public function edit_room(Request $request, $id)
 
 // للبار
 
+// public function bookings()
+// {
+//     $data = Booking::with('room')  // تحميل العلاقة مسبقاً لتحسين الأداء
+//                  ->orderBy('created_at', 'desc')
+//                  ->paginate(5);  // 10 حجوزات لكل صفحة
+    
+//     return view('admin.bookings', compact('data'));
+// }
+
+
+
+// مع الشارت
+
+
+
+
 public function bookings()
 {
-    $data = Booking::with('room')  // تحميل العلاقة مسبقاً لتحسين الأداء
-                 ->orderBy('created_at', 'desc')
-                 ->paginate(5);  // 10 حجوزات لكل صفحة
+    $data = Booking::with('room')->orderBy('created_at', 'desc')->paginate(5);
+    $newBookingsCount = Booking::whereDate('created_at', today())->count();
+    $totalBookingsCount = Booking::count();
     
-    return view('admin.bookings', compact('data'));
+    return view('admin.bookings', compact('data', 'newBookingsCount', 'totalBookingsCount'));
 }
+
+
 
 
 public function delete_booking($id)
@@ -295,7 +317,7 @@ public function delete_gallary($id)
 // }
 
 
-// للبار
+// لبار الارقام 
 
 
 public function all_messages()
@@ -318,9 +340,14 @@ public function all_messages()
 
 public function new_users()
 {
-    $data = User::orderBy('created_at', 'desc')->paginate(5); // 10 مستخدمين لكل صفحة
+    $data = User::orderBy('created_at', 'desc')->paginate(5); 
     return view('admin.new_users', compact('data'));
 }
+
+
+
+
+
 
 
 public function send_mail($id)
@@ -366,12 +393,15 @@ public function send_mail($id)
 
     public function changeUsertype(Request $request, $id)
     {
-        $user = \App\Models\User::findOrFail($id);
+        // $user = \App\Models\User::findOrFail($id);
+        $user = User::findOrFail($id);
     
         if ($user) {
             $user->usertype = $request->input('usertype');
-            if ($user instanceof \App\Models\User) {
-                if ($user instanceof \App\Models\User) {
+            // if ($user instanceof \App\Models\User) {
+            if ($user instanceof User) {
+                // if ($user instanceof \App\Models\User) {
+                if ($user instanceof User) {
                     $user->save();
                 } else {
                     return redirect()->back()->with('error', 'User instance not found.');
@@ -551,6 +581,8 @@ public function show_booking(Request $request)
             ->where('name', 'like', '%' . $search . '%')
             ->orWhere('email', 'like', '%' . $search . '%')
             ->orWhere('phone', 'like', '%' . $search . '%')
+            ->orWhere('start_date', 'like', '%' . $search . '%')
+            ->orWhere('end_date', 'like', '%' . $search . '%')
             ->orWhere('payment_method', 'like', '%' . $search . '%')
             ->orWhereHas('room', function ($query) use ($search) {
                 $query->where('room_title', 'like', '%' . $search . '%');
@@ -594,17 +626,11 @@ public function searchUser(Request $request)
     $data = User::where('name', 'like', "%$query%")
         ->orWhere('email', 'like', "%$query%")
         ->orWhere('phone', 'like', "%$query%")
+        ->orWhere('usertype', 'like', "%$query%")
         ->paginate(10);
 
     return view('admin.new_users', compact('data'));
 }
-
-
-
-
-
-
-
 
 
 
