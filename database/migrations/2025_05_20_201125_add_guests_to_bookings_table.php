@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gallaries', function (Blueprint $table) {
-            $table->id();
-            $table->string('image')->nullable();
-            $table->timestamps();
-        });
+             if (!Schema::hasColumn('bookings', 'guests')) {
+            Schema::table('bookings', function (Blueprint $table) {
+                $table->integer('guests')->nullable();
+            });
+        }
+
     }
 
     /**
@@ -23,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gallaries');
+       Schema::table('bookings', function (Blueprint $table) {
+        $table->dropColumn('guests');
+    });
     }
 };
