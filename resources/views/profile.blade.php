@@ -260,10 +260,10 @@
                         </a>
                     @endif
                     
-                    {{-- <button type="submit" class="dashboard-btn" style="background-color: #DB6574; color: white;">
+                    <button type="submit" class="dashboard-btn" style="background-color: #DB6574; color: white;">
                         <i class="fas fa-save"></i> Update Profile
                     </button>
-                </div> --}}
+                </div>
              
             </div>
         @else
@@ -286,7 +286,6 @@
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th>Status</th>
-                                    {{-- <th>Edit</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -295,7 +294,6 @@
                                         <td>{{ $booking->room->room_title ?? 'Not specified' }}</td>
                                         <td>{{ $booking->start_date }}</td>
                                         <td>{{ $booking->end_date }}</td>
-                                        {{-- <td>{{ $booking->status }}</td> --}}
                                         <td>
                                             @if($booking->status == 'approve')
                                                 <span class="badge bg-success">Confirmed</span>
@@ -305,12 +303,6 @@
                                                 <span class="badge bg-warning text-dark">Pending</span>
                                             @endif
                                         </td>
-
-                                        {{-- للتعديل --}}
-
-                                    {{-- <td>
-                            <a href="{{ route('booking.editBooking', $booking->id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                    </td> --}}
 
                                     </tr>
                                 @endforeach

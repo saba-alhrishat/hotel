@@ -145,22 +145,6 @@ Route::get('/edit-user/{id}', [AdminController::class, 'edit'])->name('user.edit
 Route::put('/update-user/{id}', [AdminController::class, 'update'])->name('user.update');
 
 
-
-
-
-
-
-// *******************************************
-// للتعديل اليوزر ع بياناته
-
-// عرض نموذج تعديل الحجز
-// Route::get('/edit-booking/{id}', [AdminController::class, 'editBooking'])->name('booking.editBooking');
-
-// // تحديث بيانات الحجز
-// Route::put('/booking/update/{id}', [AdminController::class, 'update_booking'])->name('booking.update');
-
-
-
 // سيرش
 
 

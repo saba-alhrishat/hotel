@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 // FLUTTER****************************************************
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
+
+
 
 
 
@@ -31,3 +34,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/rooms', [AdminController::class, 'api_rooms']);
 Route::post('/signin', [AdminController::class, 'api_sign_in']);
+
+
+
+
+Route::get('/api/rooms/{id}', action: [HomeController::class, 'show']);

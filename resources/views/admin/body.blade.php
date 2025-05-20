@@ -154,9 +154,6 @@
 @endphp
 
 
-
-
-
  @php
     // قيم افتراضية لجميع المتغيرات
     $newUsersCount = $newUsersCount ?? \App\Models\User::whereDate('created_at', today())->count();
@@ -168,6 +165,10 @@
     $newMessagesCount = $newMessagesCount ?? 0; // يمكنك استبدالها بطلب حقيقي للرسائل
     $newRoomsCount = $newRoomsCount ?? 0; // يمكنك استبدالها بطلب حقيقي للغرف
 @endphp
+
+
+
+
 
 <div class="page-content">
   <div class="page-header">
@@ -260,6 +261,9 @@ style="width: {{ ($newRoomsCount > 0 ? 55 : 0) }}%"
     </div>
   </section>
   
+
+
+
   <!-- باقي المحتوى -->
   <section class="no-padding-bottom">
     <div class="container-fluid">
@@ -267,6 +271,7 @@ style="width: {{ ($newRoomsCount > 0 ? 55 : 0) }}%"
         <div class="col-lg-4">
           <div class="bar-chart block no-margin-bottom">
             <canvas id="barChartExample1"></canvas>
+            
           </div>
           <div class="bar-chart block">
             <canvas id="barChartExample2"></canvas>
@@ -280,28 +285,6 @@ style="width: {{ ($newRoomsCount > 0 ? 55 : 0) }}%"
       </div>
     </div>
   </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

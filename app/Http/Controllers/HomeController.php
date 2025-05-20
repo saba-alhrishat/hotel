@@ -110,26 +110,6 @@ class HomeController extends Controller
 
 // للبروفايل
 
-//     public function profile()
-// {
-//     $user = Auth::user();
-
-//     if (!$user instanceof \App\Models\User) {
-//         return back()    if (!$user) {
-//         return redirect()->route('login');
-//     }
-
-//     $bookings = Booking::where('user_id', $user->id)
-//                        ->with(['room', 'user'])
-//                        ->get();
-
-//                     //    dd($bookings);
-
-//     return view('profile', compact('bookings', 'user'));
-// }
-// }
-
-
 
 public function profile()
 {
@@ -225,8 +205,16 @@ public function updateImage(Request $request)
 
 
 
-
-
+// flutter
+public function showde($id)
+{
+    $room = Room::find($id);
+    if ($room) {
+        return response()->json($room);
+    } else {
+        return response()->json(['message' => 'Room not found'], 404);
+    }
+}
 
 
 
