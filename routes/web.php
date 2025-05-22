@@ -54,7 +54,11 @@ route::get('/bookings',[AdminController::class,'bookings'])
 ->middleware(['auth','admin']);
 
 
+// لتحقق ازا عامل لوق ان
 
+
+Route::post('/booking/{id}', [HomeController::class, 'add_booking'])
+    ->middleware('auth'); // هذا يضمن إن المستخدم عامل تسجيل دخول
 
 
 route::get('/delete_booking/{id}',[AdminController::class,'delete_booking'])

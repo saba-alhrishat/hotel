@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;  // لاستخدام Auth للمستخدم المسجل دخوله
-use Illuminate\Support\Facades\Validator;  // لاستخدام Validator للتحقق من صحة البيانات
+use Illuminate\Support\Facades\Auth;  
+use Illuminate\Support\Facades\Validator;  
 
 use App\Models\Room;
 use App\Models\Booking;
@@ -23,6 +23,14 @@ class HomeController extends Controller
 
     public function add_booking(Request $request, $id)
     {
+
+
+        // لتحقق ازا عامل لوق ان 
+
+         if (!Auth::check()) {
+        return redirect()->route('login')->with('message', 'Please login to make a booking.');
+    }
+        
         // التحقق من البيانات المدخلة
         $request->validate([
             'startDate' => 'required|date',
